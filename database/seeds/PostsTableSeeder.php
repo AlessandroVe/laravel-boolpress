@@ -4,6 +4,8 @@ use Illuminate\Database\Seeder;
 
 use App\Post;
 
+use Faker\Generator as Faker;
+
 class PostsTableSeeder extends Seeder
 {
     /**
@@ -11,9 +13,9 @@ class PostsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
-        $posts = [
+    /* $posts = [
             [
                 "cover"=>"https://lh3.googleusercontent.com/proxy/4-6Ww9u1RHTTEzAZl_yUiD0snYftw41tCaNcmqSv4dbQX1ifhedITXRhGMaschKmbWtTR_yW2_iFVdZd-0Zu64mxI-LqS75QnaYb94s",
                 "description"=>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, quos fugiat totam ipsam, dolorum nostrum incidunt in repellat non et quaerat facere fuga ratione error tenetur, tempore earum? Debitis, cum.",
@@ -37,7 +39,16 @@ class PostsTableSeeder extends Seeder
             $postObject->description = $post['description'];
             $postObject->likes = $post['likes'];
             $postObject->save();
+        } */
+
+        for($i=0;$i<50;$i++){
+            $postObject = new Post();
+            $postObject->cover = $faker->imageUrl(640, 480, 'animals', true);
+            $postObject->description = $faker->paragraph(2);
+            $postObject->likes = $faker->randomNumber(5, true);
+            $postObject->save();
         }
+
 
 
 
