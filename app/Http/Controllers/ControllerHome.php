@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Post;
+
 class ControllerHome extends Controller
 {
     public function index(){
-        return view('home');
+
+        $allPosts = Post::all();
+        
+        return view('home',compact('allPosts'));
     }
 }
