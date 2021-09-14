@@ -1,24 +1,23 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
-    </head>
-    <body>
-        @foreach($allPosts as $Post)
-            <div>
-                <div class="cover">
-                    <img src="{{$Post['cover']}}" alt="">
-                </div>
-                <div class='description'>
-                    <p>{{$Post['description']}}</p>
-                </div>
-                <div class='likes'>
-                    <p>{{$Post['likes']}}</p>
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard') }}</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    {{ __('You are logged in!') }}
                 </div>
             </div>
-        @endforeach
-    </body>
-</html>
+        </div>
+    </div>
+</div>
+@endsection
