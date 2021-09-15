@@ -8,6 +8,7 @@
         <th scope="col">description</th>
         <th scope="col">likes</th>
         <th scope="col">cover</th>
+        <th scope="col">select</th>
         </tr>
   </thead>
    <tbody>  
@@ -17,6 +18,7 @@
             <td><p>{{$Post['description']}}</p></td>
             <td><p>{{$Post['likes']}}</p></td>
             <td><img src="{{$Post['cover']}}" alt=""></td>
+            <td><i class="fas fa-door-open"></i></td>
             </tr>        
         @endforeach
   </tbody>  
