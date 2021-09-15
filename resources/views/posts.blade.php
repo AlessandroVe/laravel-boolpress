@@ -18,7 +18,7 @@
             <td><p>{{$Post['description']}}</p></td>
             <td><p>{{$Post['likes']}}</p></td>
             <td><img src="{{$Post['cover']}}" alt=""></td>
-            <td><i class="fas fa-door-open"></i></td>
+            <td><a href="{{ route('posts.show', $post) }}"><i class="fas fa-door-open"></i></a></td>
             </tr>        
         @endforeach
   </tbody>  
