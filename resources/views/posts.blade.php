@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-@foreach($allPosts as $Post)
+
+<!-- @foreach($allPosts as $Post)
             <div>
                 <div class="cover">
                     <img src="{{$Post['cover']}}" alt="">
@@ -13,35 +14,25 @@
                     <p>{{$Post['likes']}}</p>
                 </div>
             </div>
-@endforeach
+@endforeach -->
 <table class="table">
   <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
+        <tr>
+        <th scope="col">#</th>
+        <th scope="col">description</th>
+        <th scope="col">likes</th>
+        <th scope="col">cover</th>
+        </tr>
   </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
+   <tbody>  
+        @foreach($allPosts as $Post)
+            <tr>
+            <th scope="row">{{$loop->iteration}}</th>
+            <td><p>{{$Post['description']}}</p></td>
+            <td><p>{{$Post['likes']}}</p></td>
+            <td><img src="{{$Post['cover']}}" alt=""></td>
+            </tr>        
+        @endforeach
+  </tbody>  
 </table>
 @endsection
