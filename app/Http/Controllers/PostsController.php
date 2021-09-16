@@ -39,7 +39,11 @@ class PostsController extends Controller
     {
         dd($request);
 
-        
+        $data = $request->all();
+
+
+
+
 
     }
 
