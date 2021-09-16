@@ -14,7 +14,7 @@
 @endif
 
 <div class='container'>
-    <form>
+    <form action="{{route('posts.store')}}"method="post">
         @csrf
 
         <div class="form-group d-flex align-items-center">
