@@ -46,6 +46,11 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('posts.index') }}">Tutti i post</a>
                             </li>
+                            @if (Request::route()->getName() === 'posts.index')
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('posts.create') }}">Nuovo post</a>
+                                </li>
+                            @endif
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>

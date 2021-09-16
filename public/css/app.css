@@ -15555,3 +15555,7 @@ table img {
   text-align: center;
 }
 
+.container-post img {
+  width: 100%;
+}
+
