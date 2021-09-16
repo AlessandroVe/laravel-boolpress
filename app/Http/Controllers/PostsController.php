@@ -37,14 +37,17 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+
 
         $data = $request->all();
 
+        $newPost = new Post ();
+        $newPost->cover = $data['cover'];
+        $newPost->description = $data['description'];
+        $newPost->likes = $data['likes'];
+        $newPost->save();
 
-
-
-
+        return redirect()->route('posts.show',['post' => $newPost->id]);
     }
 
     /**
