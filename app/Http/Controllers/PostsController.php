@@ -37,7 +37,11 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-
+        $request->validate([
+            'cover'=>'url',
+            'description'=>'string',
+            'likes'=>'numeric',
+        ]);
 
         $data = $request->all();
 
