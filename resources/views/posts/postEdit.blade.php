@@ -13,8 +13,10 @@
     </div>
 @endif
 <div class='container'>
-    <form action=""method="post">
+    <form action="{{route('posts.update',$post)}}"method="post">
         @csrf
+
+        @method('PUT')
 
         <div class="form-group d-flex align-items-center">
             <label for="description">Description</label>
