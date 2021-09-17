@@ -87,6 +87,12 @@ class PostsController extends Controller
     public function update(Request $request, Post $post)
     {
 
+        $request->validate([
+            'cover'=>'url',
+            'description'=>'string',
+            'likes'=>'numeric',
+        ]);
+
         $data = $request->all();
 
 
