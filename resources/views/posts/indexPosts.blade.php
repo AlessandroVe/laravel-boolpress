@@ -11,6 +11,7 @@
               <th scope="col">cover</th>
               <th scope="col">select</th>
               <th scope="col">edit</th>
+              <th scope="col">delete</th>
               </tr>
         </thead>
          <tbody>  
@@ -22,6 +23,13 @@
                         <td><img src="{{$Post['cover']}}" alt=""></td>
                         <td><a href="{{route('posts.show',$Post)}} "><i class="fas fa-door-open"></i></a></td>
                         <td><a href="{{route('posts.edit',$Post)}} "><i class="fas fa-edit"></i></a></td>
+                        <td>  
+                              <form action="{{route('posts.destroy',$Post)}} " method='POST'>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"><i class="fas fa-trash-alt"></i></button>
+                              </form>
+                        </td>
                   </tr>        
               @endforeach
         </tbody>  
