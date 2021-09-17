@@ -15,7 +15,7 @@
               </tr>
         </thead>
          <tbody>  
-              @foreach($allPosts as $Post)
+              @foreach($allPosts->reverse() as $Post)
                   <tr>
                         <th scope="row">{{$Post->id}}</th>
                         <td><p>{{$Post['description']}}</p></td>

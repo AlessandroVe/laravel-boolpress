@@ -16,6 +16,7 @@ class PostsController extends Controller
     public function index()
     {
         $allPosts = Post::all();
+        
         return view('posts.indexPosts',compact('allPosts'));
     }
 
