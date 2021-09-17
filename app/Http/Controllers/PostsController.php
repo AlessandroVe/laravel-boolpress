@@ -84,9 +84,25 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+
+        $data = $request->all();
+
+
+        $post->fill($data);
+        $post->save();
+
+        /* si puo fare anche in questo modo :
+            $post = new Post ();
+            $post->cover = $data['cover'];
+            $post->description = $data['description'];
+            $post->likes = $data['likes'];
+            $post->save();
+        */
+
+        return redirect()->route('posts.show', $post);
+
     }
 
     /**
