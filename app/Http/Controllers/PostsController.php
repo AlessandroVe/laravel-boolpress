@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Post;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -27,7 +28,12 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('posts.createPost');
+        if(!Auth::check()) {
+            echo "devi essere loggato";
+        }else{
+
+            return view('posts.createPost');
+        }
     }
 
     /**
@@ -75,7 +81,11 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.postEdit', compact('post') );
+        if(!Auth::check()) {
+            echo "devi essere loggato";
+        }else{
+            return view('posts.postEdit', compact('post') );
+        };
     }
 
     /**
@@ -120,10 +130,13 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        $post= Post::find($id);
-        $post->delete();
+        if(!Auth::check()) {
+            echo "devi essere loggato";
+        }else{
+            $post= Post::find($id);
+            $post->delete();
 
-        return redirect()->route('posts.index');
-
+            return redirect()->route('posts.index');
+        }
     }
 }
