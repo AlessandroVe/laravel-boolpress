@@ -15559,3 +15559,11 @@ table img {
   width: 100%;
 }
 
+.container-Home {
+  text-align: center;
+}
+
+.container-Home img {
+  max-height: 400px;
+}
+

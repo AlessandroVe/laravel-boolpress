@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-@foreach($allPosts as $Post)
+<div class="container container-Home">
+    <h1>Tutti i Post del tuo database</h1>
+    @foreach($allPosts as $Post)
             <div>
                 <div class="cover">
                     <img src="{{$Post['cover']}}" alt="">
@@ -13,5 +15,6 @@
                     <p>{{$Post['likes']}}</p>
                 </div>
             </div>
-        @endforeach
+    @endforeach
+</div>
 @endsection
