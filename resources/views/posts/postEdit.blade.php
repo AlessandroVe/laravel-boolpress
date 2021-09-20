@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Edit-Post')
+
 @section('content')
 @if($errors->any())
     <div class="alert alert-danger">

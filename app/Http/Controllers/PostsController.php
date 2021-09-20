@@ -29,7 +29,7 @@ class PostsController extends Controller
     public function create()
     {
         if(!Auth::check()) {
-            echo "devi essere loggato";
+            return view('alert_log');
         }else{
 
             return view('posts.createPost');
@@ -82,7 +82,7 @@ class PostsController extends Controller
     public function edit(Post $post)
     {
         if(!Auth::check()) {
-            echo "devi essere loggato";
+            return view('alert_log');
         }else{
             return view('posts.postEdit', compact('post') );
         };
@@ -131,7 +131,7 @@ class PostsController extends Controller
     public function destroy($id)
     {
         if(!Auth::check()) {
-            echo "devi essere loggato";
+            return view('alert_log');
         }else{
             $post= Post::find($id);
             $post->delete();

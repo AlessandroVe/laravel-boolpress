@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'AllPost')
 @section('content')
 <div class="container">
       <table class="table">

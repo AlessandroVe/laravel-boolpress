@@ -15564,6 +15564,20 @@ table img {
 }
 
 .container-Home img {
-  max-height: 400px;
+  max-width: 400px;
+  width: 100%;
+}
+
+.container-alert {
+  border-radius: 25px;
+  background-color: lightgrey;
+  height: 50vh;
+  width: 50vw;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 

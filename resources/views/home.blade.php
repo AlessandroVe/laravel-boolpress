@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'HomePage')
+
 @section('content')
 <div class="container container-Home">
     <h1>Tutti i Post del tuo database</h1>
