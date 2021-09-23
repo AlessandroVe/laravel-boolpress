@@ -4,6 +4,9 @@ use Illuminate\Database\Seeder;
 
 use App\Post;
 use App\PostDetail;
+use App\Category;
+
+
 
 
 use Faker\Generator as Faker;
@@ -43,6 +46,29 @@ class PostsTableSeeder extends Seeder
             $postObject->save();
         } */
 
+
+        //popoliamo la tabella Categories
+        $listCategories=[
+            'thriller',
+            'avventura',
+            'azione',
+            'fantascienza',
+            'romantico',
+            'biografico'
+        ];
+
+        $listOfCategoryID=[];
+
+        foreach($listCategories as $category){
+
+            $categoryObject = new Category();
+            $categoryObject->name = $category;
+            $categoryObject->save();
+            $listOfCategoryID[] = $categoryObject->id;
+
+        }
+
+
         for($i=0;$i<50;$i++){
             
             // popolare la tabella Post_details
@@ -59,7 +85,13 @@ class PostsTableSeeder extends Seeder
             $postObject->cover = $faker->imageUrl(640, 480, 'animals', true);
             $postObject->description = $faker->paragraph(2);
             $postObject->likes = $faker->randomNumber(5, true);
+
             $postObject->post_detail_id = $postDetail->id;
+
+            $randomCategoryKey = array_rand($listOfCategoryID,1);
+            $categoryID = $listOfCategoryID[$randomCategoryKey];
+            $postObject->category_id = $categoryID;
+
             $postObject->save();
 
 
