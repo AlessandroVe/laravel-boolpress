@@ -3,6 +3,8 @@
 use Illuminate\Database\Seeder;
 
 use App\Post;
+use App\PostDetail;
+
 
 use Faker\Generator as Faker;
 
@@ -42,11 +44,33 @@ class PostsTableSeeder extends Seeder
         } */
 
         for($i=0;$i<50;$i++){
+            
+            // popolare la tabella Post_details
+
+            $postDetail = new PostDetail();
+            $postDetail->form_factor = $faker->words(1,true);
+            $postDetail->publisher = $faker->words(1,true);
+            $postDetail->publication_year = $faker->date('Y');
+            $postDetail->save();
+            
+
+            // popolare la tabella Posts
             $postObject = new Post();
             $postObject->cover = $faker->imageUrl(640, 480, 'animals', true);
             $postObject->description = $faker->paragraph(2);
             $postObject->likes = $faker->randomNumber(5, true);
+            $postObject->post_detail_id = $postDetail->id;
             $postObject->save();
+
+
+
+
+
+
+
+
+
+
         }
 
 

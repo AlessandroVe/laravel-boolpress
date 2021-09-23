@@ -11,4 +11,10 @@ class Post extends Model
         'description',
         'likes',
     ];
+
+    public function postDetail(){
+        // belongsto dove abbiamo inserito la foreign key
+       return $this->belongsTo(PostDetail::class);
+
+    }
 }
