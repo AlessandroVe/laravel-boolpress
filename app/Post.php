@@ -17,4 +17,10 @@ class Post extends Model
        return $this->belongsTo(PostDetail::class);
 
     }
+
+    public function category(){
+        // belongsto dove abbiamo inserito la foreign key
+       return $this->belongsTo(Category::class);
+
+    }
 }
