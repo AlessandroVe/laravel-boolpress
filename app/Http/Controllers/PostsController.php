@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Post;
+use App\PostDetail;
+use App\Category;
+
 use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
@@ -31,8 +34,8 @@ class PostsController extends Controller
         if(!Auth::check()) {
             return view('alert_log');
         }else{
-
-            return view('posts.createPost');
+            $categories = Category::all();
+            return view('posts.createPost',compact('categories'));
         }
     }
 
@@ -48,15 +51,32 @@ class PostsController extends Controller
             'cover'=>'url',
             'description'=>'string',
             'likes'=>'numeric',
+            'publication_year'=>'numeric',
+            'publisher'=>'string',
+            'form_factor'=>'string',
         ]);
 
         $data = $request->all();
+        
+        $postDetail = new PostDetail();
+        $postDetail->form_factor = $data['form_factor'];
+        $postDetail->publisher = $data['publisher'];
+        $postDetail->publication_year = $data['publication_year'];
+        $postDetail->save();
+
 
         $newPost = new Post ();
         $newPost->cover = $data['cover'];
         $newPost->description = $data['description'];
         $newPost->likes = $data['likes'];
+        
+        $newPost->post_detail_id = $postDetail->id;
+
+        $newPost->category_id = $data['category_id'];
+
         $newPost->save();
+
+        
 
         return redirect()->route('posts.show',['post' => $newPost->id]);
     }
